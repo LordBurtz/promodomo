@@ -10,3 +10,16 @@ note n
         (grade, grades !! (idx - 1))
 
         where grades = ["sehr gut", "gut", "befriedigend", "ausreichend", "nicht ausreichend"]
+
+tax :: Double -> Double
+tax income
+  | income < 10000 = 0
+  | income <= 30000 = 
+    let taxable = income - 10000 in
+    taxable * 0.1 
+  | income <= 70000 = 
+    let taxable = income - 30000 in
+    taxable * 0.2 + tax 30000
+  | otherwise = 
+    let taxable = income - 70000 in
+    taxable * 0.3 + tax 70000
