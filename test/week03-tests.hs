@@ -1,10 +1,7 @@
-{-# LANGUAGE ScopedTypeVariables #-}
 module Main where
 
 import SolutionWeek03 ( note, tax, length', length'', reverse', reverse'' )
 import TestUtils
-import System.Timeout (timeout)
-import Control.Exception (try, evaluate, SomeException)
 
 noteTestCases :: [(TestCase (Integer, String), Double)]
 noteTestCases = [
@@ -62,14 +59,3 @@ main = do
 
     putStrLn "\n --- testing tail recursiveness of reverse'' :: [a] -> Int ---"
     runTestSuite reverse'' (==) tailRecReverseTestCase
-
-runTailRecursiveTestSuite :: forall b a. Show b => (a -> b) -> (b -> b -> Bool) -> [(TestCase b, a)] -> IO ()
-runTailRecursiveTestSuite func predicate testCases = mapM_ runTest testCases
-    where
-    runTest (testcase@(TestCase expected desc), input) = do
-        -- let resultVal = func input
-        result <- timeout 5 $ try ((evaluate . func) input) :: IO (Maybe (Either SomeException b))
-        case result of
-            Nothing -> putStrLn " TIMED OUT"
-            Just (Left ex) -> putStrLn " EXCEPTION: "
-            Just (Right actual) -> putStrLn $ "ran: " ++ show actual
