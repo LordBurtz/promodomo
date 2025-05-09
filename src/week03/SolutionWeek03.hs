@@ -54,7 +54,7 @@ append'' a b = append''' a b []
     append''' a b acc = a ++ b
 
 take' :: Int -> [a] -> [a]
-take' 0 a = a
+take' 0 a = []
 take' n [] = []
 take' n (x:xs) = x : take' (n -1) xs
 
