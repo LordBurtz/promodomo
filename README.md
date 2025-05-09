@@ -27,7 +27,9 @@ Use the website its too hard frfr
   
 
 ## Running and using stuff
-Edit `Week03.hs` or the specific file, then try it in `ghci`
+After unpacking the .zip or downloading the repo, open the new directory (hint: called `promodomo` in your favourite text editor).  
+
+Edit `Week03.hs` which is in`src/week03/`, then try it in `ghci`
 ```sh
  > cabal repl
 ```  
