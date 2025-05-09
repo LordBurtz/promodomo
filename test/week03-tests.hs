@@ -1,6 +1,6 @@
 module Main where
 
-import SolutionWeek03 ( note, tax, length', length'', reverse', reverse'' )
+import Week03 ( note, tax, length', length'', reverse', reverse'', append', append'', take', take'' )
 import TestUtils
 
 noteTestCases :: [(TestCase (Integer, String), Double)]
@@ -37,6 +37,21 @@ tailRecReverseTestCase = [
     (TestCase "testIs reverse'' TailRecursive" (reverse [1..1000000]), [1..1000000])
     ]        
 
+appendTestCases = [
+    (TestCase "testEmpty" [], ([], [])),
+    (TestCase "testLEmpty" [1, 2], ([], [1, 2])),
+    (TestCase "testREmpty" [1, 2], ([1, 2], [])),
+    (TestCase "testMultiple" [1, 2, 3, 4], ([1, 2], [3, 4]))
+    ]
+
+takeTestCases = [
+    (TestCase "testZero" [], (0, [1, 2, 3])),
+    (TestCase "testEmpty" [], (3, [])),
+    (TestCase "testFewer" [1, 2], (2, [1, 2, 3])),
+    (TestCase "testExact" [1, 2, 3], (3, [1, 2, 3])),
+    (TestCase "testMore" [1, 2, 3], (5, [1, 2, 3]))
+    ]
+
 main :: IO ()
 main = do
     putStrLn "\n --- testing note :: Double -> (Integer, String) ---"
@@ -60,3 +75,15 @@ main = do
     putStrLn "\n --- testing tail recursiveness of reverse'' :: [a] -> Int ---"
     putStrLn " Hint: if it times out/takes too long its probably not tail recursive"
     runTestSuite reverse'' (==) tailRecReverseTestCase
+
+    putStrLn "\n --- testing append' :: [a] -> Int ---"
+    runTestSuite (uncurry append') (==) appendTestCases
+
+    putStrLn "\n --- testing append'' :: [a] -> Int ---"
+    runTestSuite (uncurry append'') (==) appendTestCases
+
+    putStrLn "\n --- testing take' :: Int -> [a] -> [a] ---"
+    runTestSuite (uncurry take') (==) takeTestCases
+
+    putStrLn "\n --- testing take'' :: Int -> [a] -> [a] ---"
+    runTestSuite (uncurry take'') (==) takeTestCases

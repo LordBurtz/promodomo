@@ -14,13 +14,13 @@ note n
 tax :: Double -> Double
 tax income
   | income < 10000 = 0
-  | income <= 30000 = 
+  | income <= 30000 =
     let taxable = income - 10000 in
-    taxable * 0.1 
-  | income <= 70000 = 
+    taxable * 0.1
+  | income <= 70000 =
     let taxable = income - 30000 in
     taxable * 0.2 + tax 30000
-  | otherwise = 
+  | otherwise =
     let taxable = income - 70000 in
     taxable * 0.3 + tax 70000
 
@@ -36,10 +36,31 @@ length'' lst =
 
 reverse' :: [a] -> [a]
 reverse' [] = []
-reverse' (x:xs) =reverse' xs ++ [x] 
+reverse' (x:xs) =reverse' xs ++ [x]
 
 reverse'' :: [a] -> [a]
 reverse'' lst =
   let reverse''' [] acc = acc
       reverse''' (x:xs) acc = reverse''' xs (x:acc) in
   reverse''' lst []
+
+append' :: [a] -> [a] -> [a]
+append' [] b = b
+append' (x:xs) b = x : append' xs b
+
+append'' :: [a] -> [a] -> [a]
+append'' a b = append''' a b []
+  where
+    append''' a b acc = a ++ b
+
+take' :: Int -> [a] -> [a]
+take' 0 a = a
+take' n [] = []
+take' n (x:xs) = x : take' (n -1) xs
+
+take'' :: Int -> [a] -> [a]
+take'' n a = take''' n a []
+  where
+    take''' 0 _ acc = acc
+    take''' _ [] acc = acc 
+    take''' n (x:xs) acc = take''' (n-1) xs (acc ++ [x])

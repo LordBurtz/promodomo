@@ -17,3 +17,15 @@ reverse' a = []
 
 reverse'' :: [a] -> [a]
 reverse'' a = []
+
+append' :: [a] -> [a] -> [a]
+append' a b = []
+
+append'' :: [a] -> [a] -> [a]
+append'' a b = []
+
+take' :: Int -> [a] -> [a]
+take' a b = []
+
+take'' :: Int -> [a] -> [a]
+take'' a b = []
