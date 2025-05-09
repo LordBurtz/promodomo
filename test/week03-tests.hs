@@ -34,7 +34,7 @@ reverseTestCases = [
     ]
 
 tailRecReverseTestCase = [
-    (TestCase "testIsReverse''TailRecursive" (reverse [1..1000000]), [1..1000000])
+    (TestCase "testIs reverse'' TailRecursive" (reverse [1..1000000]), [1..1000000])
     ]        
 
 main :: IO ()
@@ -58,4 +58,5 @@ main = do
     runTestSuite reverse'' (==) reverseTestCases
 
     putStrLn "\n --- testing tail recursiveness of reverse'' :: [a] -> Int ---"
+    putStrLn " Hint: if it times out/takes too long its probably not tail recursive"
     runTestSuite reverse'' (==) tailRecReverseTestCase
