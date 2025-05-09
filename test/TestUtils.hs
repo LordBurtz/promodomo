@@ -31,7 +31,7 @@ msgOf name _ _ True = successMsg name
 msgOf name expected actual False = failureMsg name expected actual
 
 successMsg :: Show a => a -> String
-successMsg name = "✓ " ++ show name ++ "passed"
+successMsg name = "✓ " ++ show name ++ " passed"
 
 failureMsg :: Show a => String -> a -> a -> String
 failureMsg name expected actual =
