@@ -11,3 +11,9 @@ length' a = -1
 
 length'' :: [a] -> Int
 length'' a = -1
+
+reverse' :: [a] -> [a]
+reverse' a = []
+
+reverse'' :: [a] -> [a]
+reverse'' a = []

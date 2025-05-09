@@ -33,3 +33,13 @@ length'' lst =
   let length''' [] acc = acc
       length''' (x:xs) acc = length''' xs (acc + 1) in
     length''' lst 0
+
+reverse' :: [a] -> [a]
+reverse' [] = []
+reverse' (x:xs) =reverse' xs ++ [x] 
+
+reverse'' :: [a] -> [a]
+reverse'' lst =
+  let reverse''' [] acc = acc
+      reverse''' (x:xs) acc = reverse''' xs (x:acc) in
+  reverse''' lst []

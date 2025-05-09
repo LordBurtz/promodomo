@@ -1,6 +1,6 @@
 module Main where
 
-import Week03 ( note, tax, length', length'' )
+import Week03 ( note, tax, length', length'', reverse', reverse'' )
 import TestUtils
 
 noteTestCases :: [(TestCase (Integer, String), Double)]
@@ -25,6 +25,12 @@ lengthTestCases = [
     (TestCase "testEmpty" 0, []),
     (TestCase "testSingle" 1, [1]),
     (TestCase "testMultiple" 3, [1, 2, 3])
+    ]
+
+reverseTestCases = [
+    (TestCase "testEmpty" [], []),
+    (TestCase "testSingle" [1], [1]),
+    (TestCase "testMultiple" [3, 2, 1], [1, 2, 3])
     ]        
 
 main :: IO ()
@@ -40,3 +46,9 @@ main = do
 
     putStrLn "\n --- testing length'' :: [a] -> Int ---"
     runTestSuite length'' (==) lengthTestCases
+
+    putStrLn "\n --- testing reverse' :: [a] -> Int ---"
+    runTestSuite reverse' (==) reverseTestCases
+
+    putStrLn "\n --- testing reverse'' :: [a] -> Int ---"
+    runTestSuite reverse'' (==) reverseTestCases
