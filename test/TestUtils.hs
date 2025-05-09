@@ -2,7 +2,6 @@ module TestUtils where
 
 data TestCase a = TestCase {
     name :: String,
-    predicate :: a -> a -> Bool,
     expected :: a
 }
 
@@ -14,8 +13,16 @@ data TestCaseResult = TestCaseResult {
 instance Show TestCaseResult where
     show (TestCaseResult _ msg) = msg
 
-expect' :: Show a => TestCase a -> a -> TestCaseResult
-expect' (TestCase name predicate expected) actual =
+
+-- wonky test logic, don't look too close
+
+runTestSuite ::  Show b => (a -> b) -> (b -> b -> Bool) -> [(TestCase b, a)] -> IO ()
+runTestSuite func predicate testCases =
+    let expect (testcase, input) = expect' testcase predicate $ func input in
+    mapM_ (print . expect) testCases
+
+expect' :: Show a => TestCase a -> (a -> a -> Bool) -> a -> TestCaseResult
+expect' (TestCase name expected) predicate actual =
     let result = predicate expected actual in
     TestCaseResult result $ msgOf name expected actual result
 
