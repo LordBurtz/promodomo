@@ -55,35 +55,37 @@ takeTestCases = [
 main :: IO ()
 main = do
     putStrLn "\n --- testing note :: Double -> (Integer, String) ---"
-    runTestSuite note (==) noteTestCases
+    runTestSuite note noteTestCases
     
     putStrLn "\n --- testing tax :: Double -> Double ---"
-    runTestSuite tax (==) taxTestCases
+    runTestSuite tax taxTestCases
 
     putStrLn "\n --- testing length' :: [a] -> Int ---"
-    runTestSuite length' (==) lengthTestCases
+    runTestSuite length' lengthTestCases
 
     putStrLn "\n --- testing length'' :: [a] -> Int ---"
-    runTestSuite length'' (==) lengthTestCases
+    runTestSuite length'' lengthTestCases
 
     putStrLn "\n --- testing reverse' :: [a] -> Int ---"
-    runTestSuite reverse' (==) reverseTestCases
+    runTestSuite reverse' reverseTestCases
 
     putStrLn "\n --- testing reverse'' :: [a] -> Int ---"
-    runTestSuite reverse'' (==) reverseTestCases
+    runTestSuite reverse'' reverseTestCases
 
     putStrLn "\n --- testing tail recursiveness of reverse'' :: [a] -> Int ---"
     putStrLn " Hint: if it times out/takes too long its probably not tail recursive"
-    runTestSuite reverse'' (==) tailRecReverseTestCase
+    runTestSuite reverse'' tailRecReverseTestCase
 
     putStrLn "\n --- testing append' :: [a] -> Int ---"
-    runTestSuite (uncurry append') (==) appendTestCases
+    runTestSuite (uncurry append') appendTestCases
 
     putStrLn "\n --- testing append'' :: [a] -> Int ---"
-    runTestSuite (uncurry append'') (==) appendTestCases
+    runTestSuite (uncurry append'') appendTestCases
 
     putStrLn "\n --- testing take' :: Int -> [a] -> [a] ---"
-    runTestSuite (uncurry take') (==) takeTestCases
+    runTestSuite (uncurry take') takeTestCases
 
     putStrLn "\n --- testing take'' :: Int -> [a] -> [a] ---"
-    runTestSuite (uncurry take'') (==) takeTestCases
+    runTestSuite (uncurry take'') takeTestCases
+    
+    putStrLn "done"

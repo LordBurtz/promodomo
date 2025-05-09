@@ -18,35 +18,26 @@ instance Show TestCaseResult where
 
 -- wonky test logic, don't look too close
 
-runTestSuite2 :: Eq b => Show b => (a -> b) -> [(TestCase b, a)] -> IO ()
-runTestSuite2 func = mapM_ runTest
-    where 
+runTestSuite :: Eq b => Show b => (a -> b) -> [(TestCase b, a)] -> IO [TestCaseResult]
+runTestSuite func = mapM runTest
+    where
       runTest (testcase@(TestCase name expected), input) = do
-        let testExpr = func input                   -- construct the unit under test
-        let resultValue = evaluate testExpr         -- create a lazy evalutation of it
-        let tryResultValue = try resultValue        -- create a exception handled evaluation
-        result <- timeout 5 tryResultValue          -- evaluate with a 5sec timeout
+        let testExpr = func input                       -- construct the unit under test
+        let resultValue = evaluate testExpr             -- create a lazy evalutation of it
+        let tryResultValue = try resultValue            -- create a exception handled evaluation
+        timeoutValue <- timeout 100000 tryResultValue   -- evaluate with a 1 sec timeout (in mikrosec)
 
-        let msg = case result of
-                Just (Right actual) -> expect2' testcase actual
+        let result = case timeoutValue of
+                Just (Right actual) -> expect' testcase actual
                 Just (Left (SomeException e)) -> TestCaseResult False $ exceptionMsg name e
                 Nothing -> TestCaseResult False $ timeoutMsg name
 
-        print msg
+        print result
+        pure result
 
-expect2' :: Eq a => Show a => TestCase a -> a -> TestCaseResult
-expect2' (TestCase name expected) actual =
+expect' :: Eq a => Show a => TestCase a -> a -> TestCaseResult
+expect' (TestCase name expected) actual =
     let result = expected == actual in
-    TestCaseResult result $ msgOf name expected actual result
-
-runTestSuite ::  Show b => (a -> b) -> (b -> b -> Bool) -> [(TestCase b, a)] -> IO ()
-runTestSuite func predicate testCases =
-    let expect (testcase, input) = expect' testcase predicate $ func input in
-    mapM_ (print . expect) testCases
-
-expect' :: Show a => TestCase a -> (a -> a -> Bool) -> a -> TestCaseResult
-expect' (TestCase name expected) predicate actual =
-    let result = predicate expected actual in
     TestCaseResult result $ msgOf name expected actual result
 
 msgOf :: Show a => String -> a -> a -> Bool -> String
