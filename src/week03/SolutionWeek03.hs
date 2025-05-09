@@ -23,3 +23,13 @@ tax income
   | otherwise = 
     let taxable = income - 70000 in
     taxable * 0.3 + tax 70000
+
+length' :: [a] -> Int
+length' [] = 0
+length' (x:xs) = 1 + length' xs
+
+length'' :: [a] -> Int
+length'' lst =
+  let length''' [] acc = acc
+      length''' (x:xs) acc = length''' xs (acc + 1) in
+    length''' lst 0

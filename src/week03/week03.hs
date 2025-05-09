@@ -1,7 +1,13 @@
 module Week03 where
 
 note :: Double -> (Integer, String)
-note n = undefined
+note n = (-1, "")
 
 tax :: Double -> Double
-tax d = undefined
+tax d = -1
+
+length' :: [a] -> Int
+length' a = -1
+
+length'' :: [a] -> Int
+length'' a = -1

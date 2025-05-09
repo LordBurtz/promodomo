@@ -1,6 +1,6 @@
 module Main where
 
-import SolutionWeek03 ( note, tax )
+import Week03 ( note, tax, length', length'' )
 import TestUtils
 
 noteTestCases :: [(TestCase (Integer, String), Double)]
@@ -19,6 +19,12 @@ taxTestCases = [
     (TestCase "testUnder10kIncome" 0, 2500),
     (TestCase "testUnder30kIncome" 1500, 25000),
     (TestCase "testUnder30kIncome" 13000, 80000)
+    ]
+
+lengthTestCases = [
+    (TestCase "testEmpty" 0, []),
+    (TestCase "testSingle" 1, [1]),
+    (TestCase "testMultiple" 3, [1, 2, 3])
     ]        
 
 main :: IO ()
@@ -28,3 +34,9 @@ main = do
     
     putStrLn "\n --- testing tax :: Double -> Double ---"
     runTestSuite tax (==) taxTestCases
+
+    putStrLn "\n --- testing length' :: [a] -> Int ---"
+    runTestSuite length' (==) lengthTestCases
+
+    putStrLn "\n --- testing length'' :: [a] -> Int ---"
+    runTestSuite length'' (==) lengthTestCases
