@@ -4,7 +4,10 @@
 Because I wanted to build something with haskell, also people kept asking how to actually test their implementations
 
 ## How to use?
-(Assuming ghc is installed)
+(Assuming ghc is installed)  
+  
+#### 0. Get the repo
+Either [clone it](https://github.com/LordBurtz/promodomo.git) or download the zip [here](https://github.com/LordBurtz/promodomo/archive/refs/heads/master.zip)
 
 #### 1. Get stack (build tool)
 Visit [their site](https://docs.haskellstack.org/en/stable/install_and_upgrade/#__tabbed_3_1) and install or copy and paste this  
