@@ -17,9 +17,12 @@ library
   hs-source-dirs:
     src
     src/week03
+    src/week04
   exposed-modules:
     Week03,
-    SolutionWeek03
+    SolutionWeek03,
+    Week04,
+    SolutionWeek04
   default-language:  Haskell2010
   build-depends:     base >= 4.7 && < 5
 
@@ -27,6 +30,7 @@ executable promodomo
   hs-source-dirs:      
     src
     src/week03
+    src/week04
   main-is:             Main.hs
   default-language:    Haskell2010
   build-depends:       base >= 4.7 && < 5
@@ -44,6 +48,14 @@ Test-Suite Week03
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test/
   main-is:             week03-tests.hs
+  other-modules:       TestUtils
+  build-depends:       base, promodomo
+  default-language:    Haskell2010
+
+Test-Suite Week04
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test/
+  main-is:             week04-tests.hs
   other-modules:       TestUtils
   build-depends:       base, promodomo
   default-language:    Haskell2010
