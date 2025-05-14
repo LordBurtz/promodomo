@@ -32,13 +32,14 @@ quicksortTestCases = [
 
 main :: IO ()
 main = do
+    let status = Passed
     putStrLn "\n --- testing palindrome :: String -> Bool ---"
-    runTestSuite palindrome palindromeTestCases
-    
+    status <- combine status <$> runTestSuite palindrome palindromeTestCases
+
     putStrLn "\n --- testing sieve' :: [Integer] -> [Integer] ---"
-    runTestSuite sieve' sieveTestCases
+    status <- combine status <$> runTestSuite sieve' sieveTestCases
 
     putStrLn "\n --- testing quicksort :: [Integer] -> [Integer] ---"
-    runTestSuite quicksort quicksortTestCases
-    
-    putStrLn "done"
+    status <- combine status <$> runTestSuite quicksort quicksortTestCases
+
+    exitFor status

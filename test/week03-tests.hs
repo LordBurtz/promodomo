@@ -54,38 +54,39 @@ takeTestCases = [
 
 main :: IO ()
 main = do
+    let status = Passed
     putStrLn "\n --- testing note :: Double -> (Integer, String) ---"
-    runTestSuite note noteTestCases
+    status <- combine status <$> runTestSuite note noteTestCases
     
     putStrLn "\n --- testing tax :: Double -> Double ---"
-    runTestSuite tax taxTestCases
+    status <- combine status <$> runTestSuite tax taxTestCases
 
     putStrLn "\n --- testing length' :: [a] -> Int ---"
-    runTestSuite length' lengthTestCases
+    status <- combine status <$> runTestSuite length' lengthTestCases
 
     putStrLn "\n --- testing length'' :: [a] -> Int ---"
-    runTestSuite length'' lengthTestCases
+    status <- combine status <$> runTestSuite length'' lengthTestCases
 
     putStrLn "\n --- testing reverse' :: [a] -> Int ---"
-    runTestSuite reverse' reverseTestCases
+    status <- combine status <$> runTestSuite reverse' reverseTestCases
 
     putStrLn "\n --- testing reverse'' :: [a] -> Int ---"
-    runTestSuite reverse'' reverseTestCases
+    status <- combine status <$> runTestSuite reverse'' reverseTestCases
 
     putStrLn "\n --- testing tail recursiveness of reverse'' :: [a] -> Int ---"
     putStrLn " Hint: if it times out/takes too long its probably not tail recursive"
-    runTestSuite reverse'' tailRecReverseTestCase
+    status <- combine status <$> runTestSuite reverse'' tailRecReverseTestCase
 
     putStrLn "\n --- testing append' :: [a] -> Int ---"
-    runTestSuite (uncurry append') appendTestCases
+    status <- combine status <$> runTestSuite (uncurry append') appendTestCases
 
     putStrLn "\n --- testing append'' :: [a] -> Int ---"
-    runTestSuite (uncurry append'') appendTestCases
+    status <- combine status <$> runTestSuite (uncurry append'') appendTestCases
 
     putStrLn "\n --- testing take' :: Int -> [a] -> [a] ---"
-    runTestSuite (uncurry take') takeTestCases
+    status <- combine status <$> runTestSuite (uncurry take') takeTestCases
 
     putStrLn "\n --- testing take'' :: Int -> [a] -> [a] ---"
-    runTestSuite (uncurry take'') takeTestCases
+    status <- combine status <$> runTestSuite (uncurry take'') takeTestCases
     
-    putStrLn "done"
+    exitFor status

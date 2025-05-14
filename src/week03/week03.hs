@@ -29,3 +29,33 @@ take' a b = []
 
 take'' :: Int -> [a] -> [a]
 take'' a b = []
+
+
+-- TestResultM monad with Failed and Passed states
+data TestResultM a = Failed | Passed
+  deriving (Show, Eq)
+
+instance Functor TestResultM where
+  fmap f Failed = Failed
+  fmap f Passed = Passed
+
+instance Applicative TestResultM where
+  pure _ = Failed
+  (<*>) _ Failed = Failed
+  (<*>) _ Passed = Passed
+
+instance Monad TestResultM where
+  Passed >>= _ = Passed
+  Failed >>= _ = Failed
+
+-- -- -- -- -- -- -- 
+
+passer = Passed
+failer = Failed
+
+dotest = do 
+  _ <- passer
+  _ <- passer
+  _ <- failer
+  passer
+
