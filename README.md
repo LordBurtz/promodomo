@@ -1,46 +1,81 @@
-# promodomo
+# Promodomo
 
-## Why? 
-Because I wanted to build something with haskell, also people kept asking how to actually test their implementations
+## Overview
+Promodomo is a Haskell project that provides a test environment for the ProMo2025 weekly programming exercises to verify your implementation
 
-## How to use?
-(Assuming ghc is installed)  
-  
-#### 0. Get the repo
-Either [clone it](https://github.com/LordBurtz/promodomo.git) or download the zip [here](https://github.com/LordBurtz/promodomo/archive/refs/heads/master.zip)
+## Purpose
+This project was created to:
+- Explore Haskell programming in a structured way
+- Provide a testing framework for verifying implementations
+- Offer practical exercises for learning functional programming concepts
 
-#### 1. Get stack (build tool)
-Visit [their site](https://docs.haskellstack.org/en/stable/install_and_upgrade/#__tabbed_3_1) and install or copy and paste this  
-  
-Linux:
+## Getting Started
+
+### Prerequisites
+- GHC (Glasgow Haskell Compiler)
+
+### Installation
+
+#### 1. Clone the Repository
 ```sh
-curl -sSL https://get.haskellstack.org/ | sh
-```  
-  
-macOS:
-```sh
-curl -sSL https://get.haskellstack.org/ | sh
-```  
-  
-windows:
-Use the website its too hard frfr  
-  
-
-## Running and using stuff
-After unpacking the .zip or downloading the repo, open the new directory (hint: called `promodomo` in your favourite text editor).  
-
-Edit `Week03.hs` which is in`src/week03/`, then try it in `ghci`
-```sh
- > cabal repl
-```  
-  
-Once you are done, run the test suit via
-```sh
- > cabal test week03
+git clone https://github.com/LordBurtz/promodomo.git
+cd promodomo
 ```
+
+Alternatively, [download the ZIP file](https://github.com/LordBurtz/promodomo/archive/refs/heads/master.zip) and extract it.
+
+#### 2. Install Stack (Build Tool)
+
+**Linux/macOS:**
+```sh
+curl -sSL https://get.haskellstack.org/ | sh
+```
+
+**Windows:**
+Download the installer from the [official Stack website](https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows).
+
+## Usage
+
+### Working on Exercises
+1. Navigate to the weekly exercise file (e.g., `src/week03/Week03.hs`)
+2. Implement the required functions according to the specifications
+3. Follow the provided function signatures and type definitions
+
+### Testing Your Implementation
+
+#### Using GHCI (Interactive Mode)
+```sh
+cabal repl
+```
+
+#### Running Tests
+```sh
+cabal test week03
+```
+Replace `week03` with the week you're currently working on.
+
+### Alternative Workflow
+You can also edit the weekly files directly on GitHub and create a Pull Request. GitHub's CI will automatically run the tests for you.
 
 ## Or:
 Edit Week{number}.hs and open a PR, githubs CI will test it for you  
 (*You can even edit the files in the browser ughh*)
   
-fr not that easy to mess up, JUST STAY IN THE FILES I PROVIDED AND USE THE FUNCTION NAMES AND DEFINITIONS 
+fr not that easy to mess up, JUST STAY IN THE FILES I PROVIDED AND USE THE FUNCTION NAMES AND 
+DEFINITIONS 
+
+## Project Structure
+- `src/` - Contains weekly exercise modules
+  - `week03/` - Week 3 exercises and solutions
+  - `week04/` - Week 4 exercises and solutions
+
+## Guidelines
+- Ensure you keep the function names and type signatures as provided
+- Only modify the implementation within the designated weekly files
+- Follow Haskell's code style conventions
+
+## Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+MIT 2025
