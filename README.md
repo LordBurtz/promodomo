@@ -37,6 +37,10 @@ Edit `Week03.hs` which is in`src/week03/`, then try it in `ghci`
 Once you are done, run the test suit via
 ```sh
  > cabal test week03
-```  
+```
+
+## Or:
+Edit Week{number}.hs and open a PR, githubs CI will test it for you  
+(*You can even edit the files in the browser ughh*)
   
 fr not that easy to mess up, JUST STAY IN THE FILES I PROVIDED AND USE THE FUNCTION NAMES AND DEFINITIONS 
