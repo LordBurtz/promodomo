@@ -3,8 +3,14 @@ name: Haskell CI
 on:
   push:
     branches: [ "master" ]
+    paths: 
+      - src/*
+      - test/*
   pull_request:
     branches: [ "master" ]
+    paths:
+      - src/*
+      - test/*
 
 permissions:
   contents: read
