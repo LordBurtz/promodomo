@@ -21,20 +21,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    
     - name: Cache GHC and Cabal
+      id: cache-ghc
       uses: actions/cache@v3
-      env:
-        cache-name: cache-ghc-cabal
       with:
         path: |
           /home/runner/.cabal
           /home/runner/.ghcup
-          /home/runner/.ghc
-        key: ${{ runner.os }}-ghc-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/cabal.project') }}
+          /opt/hostedtoolcache/ghcup
+        key: ${{ runner.os }}-ghc-8.10.3-cabal-3.2-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/cabal.project') }}
         restore-keys: |
-          ${{ runner.os }}-ghc-
+          ${{ runner.os }}-ghc-8.10.3-cabal-3.2-
+          ${{ runner.os }}-ghc-8.10.3-
+    
+    - uses: actions/checkout@v4
     
     - uses: actions/setup-haskell@v1
       with:
