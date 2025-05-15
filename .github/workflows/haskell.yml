@@ -29,20 +29,18 @@ jobs:
         cache-name: cache-ghc-cabal
       with:
         path: |
-          ~/.cabal
-          ~/.ghcup
-          ~/.local/bin
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-ghc-8.10.3-cabal-3.2-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/cabal.project') }}
+          /home/runner/.cabal
+          /home/runner/.ghcup
+          /home/runner/.ghc
+        key: ${{ runner.os }}-ghc-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/cabal.project') }}
         restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-ghc-8.10.3-cabal-3.2-
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
+          ${{ runner.os }}-ghc-
     
     - uses: actions/setup-haskell@v1
       with:
         ghc-version: '8.10.3'
         cabal-version: '3.2'
+        enable-stack: false
 
     - name: Test solution only on main
       if: github.ref == 'refs/heads/master'
