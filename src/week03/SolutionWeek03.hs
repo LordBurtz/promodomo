@@ -49,10 +49,11 @@ append' [] b = b
 append' (x:xs) b = x : append' xs b
 
 append'' :: [a] -> [a] -> [a]
-append'' a b = append''' a b []
+append'' xs ys = append''' xs id ys
   where
-    append''' a b acc = a ++ b
-
+    append''' [] f acc = f acc
+    append''' (z:zs) f acc = append''' zs (\r -> f (z : r)) acc
+ 
 take' :: Int -> [a] -> [a]
 take' 0 a = []
 take' n [] = []
