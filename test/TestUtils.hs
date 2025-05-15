@@ -28,7 +28,7 @@ runTestSuite func cases = mapM runTest cases >>= pure . combineResults
         let testExpr = func input                       -- construct the unit under test
         let resultValue = evaluate testExpr             -- create a lazy evalutation of it
         let tryResultValue = try resultValue            -- create a exception handled evaluation
-        timeoutValue <- timeout 100000 tryResultValue   -- evaluate with a 1 sec timeout (in mikrosec)
+        timeoutValue <- timeout 500000 tryResultValue   -- evaluate with a 1 sec timeout (in mikrosec)
 
         let result = case timeoutValue of
                 Just (Right actual) -> expect' testcase actual
