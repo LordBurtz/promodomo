@@ -1,6 +1,6 @@
 module Main where
 
-import Week04 (palindrome, sieve', quicksort)
+import SolutionWeek04 (palindrome, sieve', quicksort)
 import TestUtils
 
 palindromeTestCases :: [(TestCase Bool, String)]

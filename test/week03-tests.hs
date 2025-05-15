@@ -1,6 +1,6 @@
 module Main where
 
-import Week03 ( note, tax, length', length'', reverse', reverse'', append', append'', take', take'' )
+import SolutionWeek03 ( note, tax, length', length'', reverse', reverse'', append', append'', take', take'' )
 import TestUtils
 
 noteTestCases :: [(TestCase (Integer, String), Double)]
