@@ -6,6 +6,7 @@ on:
     paths: 
       - src/*
       - test/*
+      - .github/workflows/*
   pull_request:
     branches: [ "master" ]
     paths:
