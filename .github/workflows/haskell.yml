@@ -59,3 +59,5 @@ jobs:
       run: cabal test week04
     - name: Run test week 05
       run: cabal test week05
+    - name: Run test week 06
+      run: cabal test week06
