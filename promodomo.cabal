@@ -19,13 +19,16 @@ library
     src/week03
     src/week04
     src/week05
+    src/week06
   exposed-modules:
     Week03,
     SolutionWeek03,
     Week04,
     SolutionWeek04,
     Week05,
-    SolutionWeek05
+    SolutionWeek05,
+    Week06,
+    SolutionWeek06
   default-language:  Haskell2010
   build-depends:     base >= 4.7 && < 5
 
