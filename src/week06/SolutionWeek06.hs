@@ -2,7 +2,7 @@ module SolutionWeek06 where
 
 -- Aufgabe 1
 
-data Rolle = Crewmate | Imposter 
+data Rolle = Crewmate | Imposter
     deriving (Eq, Enum, Show)
 
 data Zustand = Tot | Lebending
@@ -52,7 +52,7 @@ myHead (L a _) = a
 myHead E = error "empty list"
 
 myAppend :: ML a -> ML a -> ML a
-myAppend E l = l 
+myAppend E l = l
 myAppend (L a f) l = L a $ myAppend f l
 
 myAdd :: Num a => ML a -> ML a -> ML a
@@ -62,13 +62,13 @@ myAdd _ E = E
 
 myString :: Show a => ML a -> String
 myString (L v E) = show v
-myString (L v f@(L v' f')) = show v ++ ", " ++ (myString f)
+myString (L v f@(L v' f')) = show v ++ ", " ++ myString f
 
 myLess :: ML a -> ML a -> Bool
 myLess E E = False
 myLess E _ = True
 myLess _ E = False
-myLess (L _ f) (L _ f') = myLess f f' 
+myLess (L _ f) (L _ f') = myLess f f'
 
 
 -- Aufgabe 3
@@ -76,10 +76,10 @@ length' :: [a] -> Int
 length' = foldl (\x _ -> x + 1) 0
 
 any' :: (a -> Bool) -> [a] -> Bool
-any' f lst = foldl (\acc val -> (f val) /= acc) False lst
+any' f = foldl (\acc val -> acc || f val) False
 
 maximum' :: (Ord a) => [a] -> a
-maximum' (x:xs) = foldl (\acc val -> if val > acc then val else acc) x xs
+maximum' (x:xs) = foldl (\acc val -> max val acc) x xs
 
 unzip' :: [(a, b)] -> ([a], [b])
 unzip' = foldl (\(listA, listB) (a, b) -> (listA ++ [a], listB ++ [b])) ([], [])
