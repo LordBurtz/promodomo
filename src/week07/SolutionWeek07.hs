@@ -3,7 +3,7 @@ module SolutionWeek07 where
 -- Aufgabe 1
 
 elem' :: (Eq a) => a -> [a] -> Bool
-elem' a = foldl (\acc val -> acc || a == val) False
+elem' a = foldr (\val acc -> a == val || acc) False
 
 all' :: (a -> Bool) -> [a] -> Bool
 all' f = foldl (\acc val -> acc && f val) True 

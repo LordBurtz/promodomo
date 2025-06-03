@@ -84,3 +84,11 @@ Test-Suite Week06
   other-modules:       TestUtils
   build-depends:       base, promodomo
   default-language:    Haskell2010
+
+Test-Suite Week07
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test/
+  main-is:             week07-tests.hs
+  other-modules:       TestUtils
+  build-depends:       base, promodomo
+  default-language:    Haskell2010
