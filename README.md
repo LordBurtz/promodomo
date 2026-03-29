@@ -67,7 +67,7 @@ DEFINITIONS
 ## Project Structure
 - `src/` - Contains weekly exercise modules
   - `week03/` - Week 3 exercises and solutions
-  - `week04/` - Week 4 exercises and solutions
+  - `week04/` - Week 4 exercises and solutions yey
 
 ## Guidelines
 - Ensure you keep the function names and type signatures as provided
